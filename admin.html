@@ -15,6 +15,11 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Estilos personalizados Zona Bikers -->
+    <link
+        href="css/estilos.css"
+        rel="stylesheet">
+
 </head>
 
 
@@ -25,39 +30,35 @@
     <!-- MENÚ ADMINISTRADOR -->
     <!-- ===================== -->
 
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-admin">
 
-        <h2>
-            Zona Bikers - Administración
-        </h2>
+        <div class="container">
 
-        <ul>
+            <span class="navbar-brand mb-0 h2">
+                Zona Bikers - Administración
+            </span>
 
-            <li>
-                <a href="admin.html">
+            <div class="navbar-nav">
+
+                <a class="nav-link" href="admin.html">
                     Inicio
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_productos.html">
+                <a class="nav-link" href="admin_productos.html">
                     Productos
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_usuarios.html">
+                <a class="nav-link" href="admin_usuarios.html">
                     Usuarios
                 </a>
-            </li>
 
-            <li>
-                <a href="index.html">
+                <a class="nav-link" href="index.html">
                     Volver a la tienda
                 </a>
-            </li>
 
-        </ul>
+            </div>
+
+        </div>
 
     </nav>
 
@@ -67,7 +68,7 @@
     <!-- CONTENIDO -->
     <!-- ===================== -->
 
-    <main>
+    <main class="container my-4">
 
         <section>
 
@@ -94,45 +95,66 @@
 
         <section>
 
-            <h2>
+            <h2 class="mb-4">
                 Gestión del sistema
             </h2>
 
+            <div class="row row-cols-1 row-cols-md-2 g-4">
 
-            <article class="opcion-admin">
+                <div class="col">
 
-                <h3>
-                    Productos
-                </h3>
+                    <article class="opcion-admin card card-biker h-100">
 
-                <p>
-                    Permite visualizar y administrar los productos
-                    disponibles en la tienda.
-                </p>
+                        <div class="card-body">
 
-                <a href="admin_productos.html">
-                    Administrar productos
-                </a>
+                            <h3 class="h5">
+                                Productos
+                            </h3>
 
-            </article>
+                            <p class="card-text">
+                                Permite visualizar y administrar los productos
+                                disponibles en la tienda.
+                            </p>
+
+                            <a href="admin_productos.html"
+                               class="btn btn-biker">
+                                Administrar productos
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
 
 
-            <article class="opcion-admin">
+                <div class="col">
 
-                <h3>
-                    Usuarios
-                </h3>
+                    <article class="opcion-admin card card-biker h-100">
 
-                <p>
-                    Permite visualizar y administrar los usuarios
-                    registrados en el sistema.
-                </p>
+                        <div class="card-body">
 
-                <a href="admin_usuarios.html">
-                    Administrar usuarios
-                </a>
+                            <h3 class="h5">
+                                Usuarios
+                            </h3>
 
-            </article>
+                            <p class="card-text">
+                                Permite visualizar y administrar los usuarios
+                                registrados en el sistema.
+                            </p>
+
+                            <a href="admin_usuarios.html"
+                               class="btn btn-biker">
+                                Administrar usuarios
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -144,7 +166,7 @@
     <!-- FOOTER -->
     <!-- ===================== -->
 
-    <footer>
+    <footer class="footer-biker">
 
         <p>
             Zona Bikers - Panel de Administración - 2026
