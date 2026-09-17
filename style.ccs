@@ -1,0 +1,227 @@
+
+:root {
+    --biker-negro: #15171a;
+    --biker-negro-suave: #1f2226;
+    --biker-naranja: #ff6a00;
+    --biker-naranja-oscuro: #cc5500;
+    --biker-gris: #6c757d;
+    --biker-blanco: #f5f5f5;
+}
+
+body {
+    background-color: var(--biker-blanco);
+    color: #212529;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/*NAVBAR */
+
+.navbar-biker {
+    background-color: var(--biker-negro);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.navbar-biker .navbar-brand {
+    color: var(--biker-naranja) !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar-biker .nav-link {
+    color: var(--biker-blanco) !important;
+    font-weight: 500;
+    margin-left: 0.25rem;
+}
+
+.navbar-biker .nav-link:hover,
+.navbar-biker .nav-link.active {
+    color: var(--biker-naranja) !important;
+}
+
+.navbar-biker .navbar-toggler {
+    border-color: var(--biker-naranja);
+}
+
+/* HERO / ENCABEZADOS DE PÁGINA */
+
+.hero-biker {
+    background: linear-gradient(180deg, var(--biker-negro) 0%, var(--biker-negro-suave) 100%);
+    color: var(--biker-blanco);
+    padding: 3rem 0;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.hero-biker h1 {
+    color: var(--biker-naranja);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.hero-biker img {
+    max-height: 220px;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.page-header {
+    background-color: var(--biker-negro);
+    color: var(--biker-blanco);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: var(--biker-naranja);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+/* TARJETAS DE PRODUCTO / BLOG / EQUIPO */
+
+.card-biker {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: 100%;
+}
+
+.card-biker:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-biker img,
+.card-img-biker {
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.card-biker .card-title {
+    font-weight: 700;
+    color: var(--biker-negro);
+}
+
+.card-biker .precio {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--biker-naranja-oscuro);
+}
+
+/* BOTONES */
+
+.btn-biker {
+    background-color: var(--biker-naranja);
+    border-color: var(--biker-naranja);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-biker:hover,
+.btn-biker:focus {
+    background-color: var(--biker-naranja-oscuro);
+    border-color: var(--biker-naranja-oscuro);
+    color: #fff;
+}
+
+.btn-outline-biker {
+    border-color: var(--biker-naranja);
+    color: var(--biker-naranja-oscuro);
+    font-weight: 600;
+}
+
+.btn-outline-biker:hover {
+    background-color: var(--biker-naranja);
+    color: #fff;
+}
+
+/* FORMULARIOS (contacto, login, registro, admin)  */
+
+.form-biker label {
+    font-weight: 600;
+    color: var(--biker-negro);
+}
+
+.form-biker .invalid-feedback {
+    display: block;
+}
+
+.form-biker .form-control:focus,
+.form-biker .form-select:focus {
+    border-color: var(--biker-naranja);
+    box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.25);
+}
+
+/* CARRITO */
+
+.resumen-carrito {
+    background-color: var(--biker-negro-suave);
+    color: var(--biker-blanco);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.resumen-carrito #totalCarrito {
+    color: var(--biker-naranja);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* PANEL DE ADMINISTRACIÓN */
+
+.navbar-admin {
+    background-color: var(--biker-negro-suave);
+    border-bottom: 3px solid var(--biker-naranja);
+}
+
+.navbar-admin .navbar-brand,
+.navbar-admin h2 {
+    color: var(--biker-naranja);
+}
+
+.navbar-admin .nav-link {
+    color: var(--biker-blanco) !important;
+}
+
+.navbar-admin .nav-link:hover {
+    color: var(--biker-naranja) !important;
+}
+
+.tabla-admin thead {
+    background-color: var(--biker-negro);
+    color: var(--biker-blanco);
+}
+
+   /* FOOTER */
+
+.footer-biker {
+    background-color: var(--biker-negro);
+    color: var(--biker-blanco);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+.footer-biker p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 767.98px) {
+    .hero-biker {
+        padding: 2rem 0;
+    }
+
+    .card-biker img,
+    .card-img-biker {
+        height: 180px;
+    }
+}
