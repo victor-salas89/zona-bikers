@@ -15,6 +15,11 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Estilos personalizados Zona Bikers -->
+    <link
+        href="css/estilos.css"
+        rel="stylesheet">
+
 </head>
 
 
@@ -25,39 +30,35 @@
     <!-- MENÚ ADMINISTRADOR -->
     <!-- ===================== -->
 
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-admin">
 
-        <h2>
-            Zona Bikers - Administración
-        </h2>
+        <div class="container">
 
-        <ul>
+            <span class="navbar-brand mb-0 h2">
+                Zona Bikers - Administración
+            </span>
 
-            <li>
-                <a href="admin.html">
+            <div class="navbar-nav">
+
+                <a class="nav-link" href="admin.html">
                     Inicio
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_productos.html">
+                <a class="nav-link" href="admin_productos.html">
                     Productos
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_usuarios.html">
+                <a class="nav-link" href="admin_usuarios.html">
                     Usuarios
                 </a>
-            </li>
 
-            <li>
-                <a href="index.html">
+                <a class="nav-link" href="index.html">
                     Volver a la tienda
                 </a>
-            </li>
 
-        </ul>
+            </div>
+
+        </div>
 
     </nav>
 
@@ -67,11 +68,15 @@
     <!-- NUEVO PRODUCTO -->
     <!-- ===================== -->
 
-    <main>
+    <main class="container my-4">
 
-        <section>
+        <section class="row justify-content-center">
 
-            <h1>
+          <div class="col-lg-8">
+
+            <div class="card card-biker p-4">
+
+            <h1 class="h3">
                 Nuevo producto
             </h1>
 
@@ -80,136 +85,136 @@
             </p>
 
 
-            <form id="formProducto">
+            <form id="formProducto" class="form-biker">
 
 
                 <!-- CÓDIGO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="codigo">
+                    <label class="form-label" for="codigo">
                         Código del producto
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="codigo"
                            name="codigo"
                            minlength="3"
                            placeholder="Ejemplo: CAS001">
 
-                    <p id="errorCodigo"></p>
+                    <p id="errorCodigo" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- NOMBRE -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="nombreProducto">
+                    <label class="form-label" for="nombreProducto">
                         Nombre
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="nombreProducto"
                            name="nombreProducto"
                            maxlength="100"
                            placeholder="Ingrese el nombre del producto">
 
-                    <p id="errorNombreProducto"></p>
+                    <p id="errorNombreProducto" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- DESCRIPCIÓN -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="descripcion">
+                    <label class="form-label" for="descripcion">
                         Descripción
                     </label>
 
-                    <textarea id="descripcion"
+                    <textarea class="form-control" id="descripcion"
                               name="descripcion"
                               rows="5"
                               maxlength="500"
                               placeholder="Ingrese una descripción">
                     </textarea>
 
-                    <p id="errorDescripcion"></p>
+                    <p id="errorDescripcion" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- PRECIO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="precio">
+                    <label class="form-label" for="precio">
                         Precio
                     </label>
 
-                    <input type="number"
+                    <input class="form-control" type="number"
                            id="precio"
                            name="precio"
                            min="0"
                            step="0.01"
                            placeholder="Ingrese el precio">
 
-                    <p id="errorPrecio"></p>
+                    <p id="errorPrecio" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- STOCK -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="stock">
+                    <label class="form-label" for="stock">
                         Stock
                     </label>
 
-                    <input type="number"
+                    <input class="form-control" type="number"
                            id="stock"
                            name="stock"
                            min="0"
                            step="1"
                            placeholder="Ingrese el stock">
 
-                    <p id="errorStock"></p>
+                    <p id="errorStock" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- STOCK CRÍTICO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="stockCritico">
+                    <label class="form-label" for="stockCritico">
                         Stock crítico
                     </label>
 
-                    <input type="number"
+                    <input class="form-control" type="number"
                            id="stockCritico"
                            name="stockCritico"
                            min="0"
                            step="1"
                            placeholder="Ingrese stock crítico">
 
-                    <p id="errorStockCritico"></p>
+                    <p id="errorStockCritico" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- CATEGORÍA -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="categoria">
+                    <label class="form-label" for="categoria">
                         Categoría
                     </label>
 
-                    <select id="categoria"
+                    <select class="form-select" id="categoria"
                             name="categoria">
 
                         <option value="">
@@ -238,20 +243,20 @@
 
                     </select>
 
-                    <p id="errorCategoria"></p>
+                    <p id="errorCategoria" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- IMAGEN -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="imagen">
+                    <label class="form-label" for="imagen">
                         Imagen
                     </label>
 
-                    <input type="file"
+                    <input class="form-control" type="file"
                            id="imagen"
                            name="imagen">
 
@@ -260,17 +265,22 @@
 
                 <!-- BOTÓN -->
 
-                <button type="submit">
+                <button type="submit"
+                        class="btn btn-biker">
                     Guardar producto
                 </button>
 
-
-                <a href="admin_productos.html">
+                <a href="admin_productos.html"
+                   class="btn btn-outline-biker">
                     Cancelar
                 </a>
 
 
             </form>
+
+            </div>
+
+          </div>
 
         </section>
 
@@ -282,7 +292,7 @@
     <!-- FOOTER -->
     <!-- ===================== -->
 
-    <footer>
+    <footer class="footer-biker">
 
         <p>
             Zona Bikers - Panel de Administración - 2026
