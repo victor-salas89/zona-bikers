@@ -15,6 +15,11 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Estilos personalizados Zona Bikers -->
+    <link
+        href="css/estilos.css"
+        rel="stylesheet">
+
 </head>
 
 
@@ -25,39 +30,35 @@
     <!-- MENÚ ADMINISTRADOR -->
     <!-- ===================== -->
 
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-admin">
 
-        <h2>
-            Zona Bikers - Administración
-        </h2>
+        <div class="container">
 
-        <ul>
+            <span class="navbar-brand mb-0 h2">
+                Zona Bikers - Administración
+            </span>
 
-            <li>
-                <a href="admin.html">
+            <div class="navbar-nav">
+
+                <a class="nav-link" href="admin.html">
                     Inicio
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_productos.html">
+                <a class="nav-link" href="admin_productos.html">
                     Productos
                 </a>
-            </li>
 
-            <li>
-                <a href="admin_usuarios.html">
+                <a class="nav-link" href="admin_usuarios.html">
                     Usuarios
                 </a>
-            </li>
 
-            <li>
-                <a href="index.html">
+                <a class="nav-link" href="index.html">
                     Volver a la tienda
                 </a>
-            </li>
 
-        </ul>
+            </div>
+
+        </div>
 
     </nav>
 
@@ -67,11 +68,15 @@
     <!-- NUEVO USUARIO -->
     <!-- ===================== -->
 
-    <main>
+    <main class="container my-4">
 
-        <section>
+        <section class="row justify-content-center">
 
-            <h1>
+          <div class="col-lg-8">
+
+            <div class="card card-biker p-4">
+
+            <h1 class="h3">
                 Nuevo usuario
             </h1>
 
@@ -80,95 +85,95 @@
             </p>
 
 
-            <form id="formUsuario">
+            <form id="formUsuario" class="form-biker">
 
 
                 <!-- RUN -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="run">
+                    <label class="form-label" for="run">
                         RUN
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="run"
                            name="run"
                            minlength="7"
                            maxlength="9"
                            placeholder="Ejemplo: 19011022K">
 
-                    <p id="errorRun"></p>
+                    <p id="errorRun" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- NOMBRE -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="nombre">
+                    <label class="form-label" for="nombre">
                         Nombre
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="nombre"
                            name="nombre"
                            maxlength="50"
                            placeholder="Ingrese el nombre">
 
-                    <p id="errorNombre"></p>
+                    <p id="errorNombre" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- APELLIDOS -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="apellidos">
+                    <label class="form-label" for="apellidos">
                         Apellidos
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="apellidos"
                            name="apellidos"
                            maxlength="100"
                            placeholder="Ingrese los apellidos">
 
-                    <p id="errorApellidos"></p>
+                    <p id="errorApellidos" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- CORREO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="correo">
+                    <label class="form-label" for="correo">
                         Correo electrónico
                     </label>
 
-                    <input type="email"
+                    <input class="form-control" type="email"
                            id="correo"
                            name="correo"
                            maxlength="100"
                            placeholder="Ingrese el correo">
 
-                    <p id="errorCorreo"></p>
+                    <p id="errorCorreo" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- FECHA DE NACIMIENTO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="fechaNacimiento">
+                    <label class="form-label" for="fechaNacimiento">
                         Fecha de nacimiento
                     </label>
 
-                    <input type="date"
+                    <input class="form-control" type="date"
                            id="fechaNacimiento"
                            name="fechaNacimiento">
 
@@ -177,13 +182,13 @@
 
                 <!-- TIPO DE USUARIO -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="tipoUsuario">
+                    <label class="form-label" for="tipoUsuario">
                         Tipo de usuario
                     </label>
 
-                    <select id="tipoUsuario"
+                    <select class="form-select" id="tipoUsuario"
                             name="tipoUsuario">
 
                         <option value="">
@@ -204,20 +209,20 @@
 
                     </select>
 
-                    <p id="errorTipoUsuario"></p>
+                    <p id="errorTipoUsuario" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- REGIÓN -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="region">
+                    <label class="form-label" for="region">
                         Región
                     </label>
 
-                    <select id="region"
+                    <select class="form-select" id="region"
                             name="region">
 
                         <option value="">
@@ -226,20 +231,20 @@
 
                     </select>
 
-                    <p id="errorRegion"></p>
+                    <p id="errorRegion" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- COMUNA -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="comuna">
+                    <label class="form-label" for="comuna">
                         Comuna
                     </label>
 
-                    <select id="comuna"
+                    <select class="form-select" id="comuna"
                             name="comuna">
 
                         <option value="">
@@ -248,43 +253,48 @@
 
                     </select>
 
-                    <p id="errorComuna"></p>
+                    <p id="errorComuna" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- DIRECCIÓN -->
 
-                <div>
+                <div class="mb-3">
 
-                    <label for="direccion">
+                    <label class="form-label" for="direccion">
                         Dirección
                     </label>
 
-                    <input type="text"
+                    <input class="form-control" type="text"
                            id="direccion"
                            name="direccion"
                            maxlength="300"
                            placeholder="Ingrese la dirección">
 
-                    <p id="errorDireccion"></p>
+                    <p id="errorDireccion" class="text-danger small"></p>
 
                 </div>
 
 
                 <!-- BOTÓN -->
 
-                <button type="submit">
+                <button type="submit"
+                        class="btn btn-biker">
                     Guardar usuario
                 </button>
 
-
-                <a href="admin_usuarios.html">
+                <a href="admin_usuarios.html"
+                   class="btn btn-outline-biker">
                     Cancelar
                 </a>
 
 
             </form>
+
+            </div>
+
+          </div>
 
         </section>
 
@@ -296,7 +306,7 @@
     <!-- FOOTER -->
     <!-- ===================== -->
 
-    <footer>
+    <footer class="footer-biker">
 
         <p>
             Zona Bikers - Panel de Administración - 2026
