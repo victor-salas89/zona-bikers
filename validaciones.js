@@ -287,3 +287,173 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+// =============================
+// LÓGICA DEL CARRITO DE COMPRAS
+// =============================
+let carrito = JSON.parse(localStorage.getItem("carritoBikers")) || [];
+
+function guardarCarrito() {
+    localStorage.setItem("carritoBikers", JSON.stringify(carrito));
+}
+
+function agregarAlCarrito(producto) {
+    const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad += producto.cantidad;
+    } else {
+        carrito.push(producto);
+    }
+    
+    guardarCarrito();
+    alert(`¡${producto.nombre} agregado al carrito!`);
+}
+
+function renderizarCarrito() {
+    const contenedorCarrito = document.getElementById("listaCarrito");
+    const elementoTotal = document.getElementById("totalCarrito");
+    
+    if (!contenedorCarrito || !elementoTotal) return;
+
+    contenedorCarrito.innerHTML = "";
+    let total = 0;
+
+    if (carrito.length === 0) {
+        contenedorCarrito.innerHTML = "<p class='text-muted fs-5'>Tu carrito está vacío.</p>";
+        elementoTotal.textContent = "$0";
+        return;
+    }
+
+    carrito.forEach((producto, index) => {
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+
+        // Crear el producto en el carrito
+        const article = document.createElement("article");
+        article.className = "producto-carrito card card-biker mb-3";
+        article.innerHTML = `
+            <div class="row g-0 align-items-center">
+                <div class="col-3 col-sm-2">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="img-fluid rounded-start p-2">
+                </div>
+                <div class="col-9 col-sm-10">
+                    <div class="card-body d-flex flex-wrap align-items-center gap-3">
+                        <h2 class="h6 mb-0 flex-grow-1">${producto.nombre}</h2>
+                        <p class="precio mb-0">Precio: $${producto.precio.toLocaleString('es-CL')}</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <label for="cant_${index}" class="form-label mb-0">Cantidad</label>
+                            <input type="number" id="cant_${index}" class="form-control form-control-sm input-cantidad" data-index="${index}" style="width: 5rem;" min="1" value="${producto.cantidad}">
+                        </div>
+                        <button type="button" class="btn btn-outline-danger btn-sm btn-eliminar" data-index="${index}">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        contenedorCarrito.appendChild(article);
+    });
+
+    // Actualizar el total
+    elementoTotal.textContent = `$${total.toLocaleString('es-CL')}`;
+
+    // Botón Eliminar
+    document.querySelectorAll(".btn-eliminar").forEach(btn => {
+        btn.addEventListener("click", function() {
+            const index = this.getAttribute("data-index");
+            carrito.splice(index, 1);
+            guardarCarrito();
+            renderizarCarrito();
+        });
+    });
+
+    document.querySelectorAll(".input-cantidad").forEach(input => {
+        input.addEventListener("change", function() {
+            const index = this.getAttribute("data-index");
+            const nuevaCantidad = parseInt(this.value);
+            if(nuevaCantidad > 0) {
+                carrito[index].cantidad = nuevaCantidad;
+                guardarCarrito();
+                renderizarCarrito(); 
+            }
+        });
+    });
+}
+
+// ===================================
+// EVENTOS PARA OBTENER DATOS DEL HTML
+// ===================================
+document.addEventListener("DOMContentLoaded", function () {
+    
+    renderizarCarrito();
+
+    // Obtenemos productos desde la página de listado
+    const botonesAgregar = document.querySelectorAll("article.card-biker button");
+    botonesAgregar.forEach(btn => {
+        if(btn.textContent.trim() === "Agregar al carrito") {
+            btn.addEventListener("click", function() {
+                const tarjeta = this.closest("article.card-biker");
+                
+                const nombre = tarjeta.querySelector(".card-title").textContent.trim();
+                const precioTexto = tarjeta.querySelector(".precio").textContent.trim();
+                const imagen = tarjeta.querySelector("img").src;
+                
+                const precioNumerico = parseInt(precioTexto.replace(/[^0-9]/g, ""));
+
+                agregarAlCarrito({
+                    nombre: nombre,
+                    precio: precioNumerico,
+                    imagen: imagen,
+                    cantidad: 1
+                });
+            });
+        }
+    });
+
+    // Obtener producto desde Detalle
+    const btnDetalle = document.getElementById("agregarCarrito");
+    if (btnDetalle) {
+        btnDetalle.addEventListener("click", function() {
+            const contenedor = this.closest(".detalle-producto");
+            
+            const nombre = contenedor.querySelector("h2").textContent.trim();
+            const precioTexto = contenedor.querySelector(".precio").textContent.trim();
+            const imagen = contenedor.querySelector("img").src;
+            const precioNumerico = parseInt(precioTexto.replace(/[^0-9]/g, ""));
+            
+            const inputCantidad = document.getElementById("cantidad");
+            const cantidad = inputCantidad ? parseInt(inputCantidad.value) : 1;
+
+            agregarAlCarrito({
+                nombre: nombre,
+                precio: precioNumerico,
+                imagen: imagen,
+                cantidad: cantidad
+            });
+        });
+    }
+
+    // Botones para manejar el Carrito
+    const btnVaciar = document.getElementById("vaciarCarrito");
+    if (btnVaciar) {
+        btnVaciar.addEventListener("click", function() {
+            if(confirm("¿Estás seguro de vaciar todo tu carrito?")) {
+                carrito = [];
+                guardarCarrito();
+                renderizarCarrito();
+            }
+        });
+    }
+
+    const btnFinalizar = document.getElementById("finalizarCompra");
+    if (btnFinalizar) {
+        btnFinalizar.addEventListener("click", function() {
+            if(carrito.length > 0) {
+                alert("¡Compra finalizada con éxito!");
+                carrito = [];
+                guardarCarrito();
+                renderizarCarrito();
+            } else {
+                alert("El carrito está vacío, no puedes finalizar la compra.");
+            }
+        });
+    }
+});
