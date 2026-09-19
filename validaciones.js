@@ -1,3 +1,9 @@
+const dbUsuarios = [
+    { correo: "admin@duoc.cl", contrasena: "12345", rol: "administrador" },
+    { correo: "vende@profesor.duoc.cl", contrasena: "vende", rol: "vendedor" },
+    { correo: "cliente@gmail.com", contrasena: "moto1", rol: "cliente" }
+];
+
 const regionesYComunas = {
     "Región Metropolitana": ["Santiago", "Puente Alto", "Maipú", "La Florida"],
     "Región de Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"],
@@ -281,8 +287,19 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (esValido) {
-                alert("Inicio de sesión correcto.");
-                window.location.href = "admin.html";
+                const usuarioValido = dbUsuarios.find(u => u.correo === correo && u.contrasena === contrasena);
+
+                if (usuarioValido) {
+                    alert(`¡Inicio de sesión correcto! Bienvenido/a (${usuarioValido.rol}).`);
+                    
+                    if (usuarioValido.rol === "administrador" || usuarioValido.rol === "vendedor") {
+                        window.location.href = "admin_2.html"; 
+                    } else {
+                        window.location.href = "index_2.html";
+                    }
+                } else {
+                    mostrarError("errorContrasenaLogin", "El correo o la contraseña son incorrectos.");
+                }
             }
         });
     }
