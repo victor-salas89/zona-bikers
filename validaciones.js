@@ -10,6 +10,95 @@ const regionesYComunas = {
     "Región del Biobío": ["Concepción", "Talcahuano", "Los Ángeles", "San Pedro de la Paz"]
 };
 
+const productos = [
+    {
+        id: 1,
+        nombre: "Casco Integral",
+        descripcion: "Casco integral para motociclista, ideal para conducción urbana y viajes en carretera.",
+        precio: 79990,
+        stock: 10,
+        imagen: "https://www.bikesport.cl/cdn/shop/files/ATOM2_NEGRO_1.png?v=1762894616",
+        alt: "Casco integral para motociclista"
+    },
+    {
+        id: 2,
+        nombre: "Guantes Biker",
+        descripcion: "Guantes con protección para conducción y mayor agarre en la moto.",
+        precio: 29990,
+        stock: 15,
+        imagen: "https://i0.wp.com/motosbaham.cl/wp-content/uploads/2023/09/guantes_moto_armad_cafe.jpg?fit=1000%2C1000&ssl=1",
+        alt: "Guantes para motociclista"
+    },
+    {
+        id: 3,
+        nombre: "Chaqueta Biker",
+        descripcion: "Chaqueta para motociclista con protecciones y estilo urbano para rodar con seguridad.",
+        precio: 99990,
+        stock: 8,
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThDrQ2S-s31MaAcLnGUbN-1--WgSdgkNHQuk0bzP82icRUKyFY-NOzlavy&s=10",
+        alt: "Chaqueta para motociclista"
+    },
+    {
+        id: 4,
+        nombre: "Protector de Rodilla",
+        descripcion: "Protector para rodillas durante la conducción, con buena comodidad y seguridad.",
+        precio: 39990,
+        stock: 20,
+        imagen: "https://images.unsplash.com/photo-1558980664-10e7170b5df9?auto=format&fit=crop&w=800&q=80",
+        alt: "Protector para motociclista"
+    }
+];
+
+function obtenerProductoPorId(id) {
+    return productos.find(producto => producto.id === Number(id)) || productos[0];
+}
+
+function formatearPrecio(precio) {
+    return `$${Number(precio).toLocaleString("es-CL")}`;
+}
+
+function renderizarDetalleProducto() {
+    const detalleProducto = document.querySelector(".detalle-producto");
+    if (!detalleProducto) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const productoActual = obtenerProductoPorId(params.get("id") || 1);
+
+    const imagen = detalleProducto.querySelector("img");
+    const nombre = detalleProducto.querySelector("h2");
+    const descripcion = detalleProducto.querySelector(".descripcion-producto");
+    const precio = detalleProducto.querySelector(".precio");
+    const stock = detalleProducto.querySelector(".stock-producto");
+
+    if (imagen) {
+        imagen.src = productoActual.imagen;
+        imagen.alt = productoActual.alt;
+    }
+
+    if (nombre) nombre.textContent = productoActual.nombre;
+    if (descripcion) descripcion.textContent = productoActual.descripcion;
+    if (precio) precio.textContent = `Precio: ${formatearPrecio(productoActual.precio)}`;
+    if (stock) stock.textContent = `Stock disponible: ${productoActual.stock} unidades`;
+
+    const contenedorRelacionados = document.getElementById("productosRelacionados");
+    if (contenedorRelacionados) {
+        const relacionados = productos.filter(producto => producto.id !== productoActual.id).slice(0, 2);
+
+        contenedorRelacionados.innerHTML = relacionados.map(producto => `
+            <div class="col">
+                <article class="card card-biker">
+                    <img src="${producto.imagen}" alt="${producto.alt}" class="card-img-biker">
+                    <div class="card-body">
+                        <h3 class="card-title h6">${producto.nombre}</h3>
+                        <p class="precio">${formatearPrecio(producto.precio)}</p>
+                        <a href="detalle_producto.html?id=${producto.id}" class="btn btn-outline-biker btn-sm">Ver producto</a>
+                    </div>
+                </article>
+            </div>
+        `).join("");
+    }
+}
+
 function inicializarSelectsUbicacion(idRegion, idComuna) {
     const selectRegion = document.getElementById(idRegion);
     const selectComuna = document.getElementById(idComuna);
@@ -400,6 +489,7 @@ function renderizarCarrito() {
 // ===================================
 document.addEventListener("DOMContentLoaded", function () {
     
+    renderizarDetalleProducto();
     renderizarCarrito();
 
     // Obtenemos productos desde la página de listado

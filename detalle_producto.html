@@ -93,7 +93,8 @@
 
                 <div class="col-md-5">
 
-                    <img src="https://www.bikesport.cl/cdn/shop/files/ATOM2_NEGRO_1.png?v=1762894616"
+                    <img id="detalleProductoImagen"
+                         src="https://www.bikesport.cl/cdn/shop/files/ATOM2_NEGRO_1.png?v=1762894616"
                          alt="Casco integral para motociclista"
                          class="img-fluid rounded shadow-sm">
 
@@ -101,23 +102,23 @@
 
                 <div class="col-md-7">
 
-                    <h2>
+                    <h2 id="detalleProductoNombre">
                         Casco Integral
                     </h2>
 
 
-                    <p>
+                    <p id="detalleProductoDescripcion" class="descripcion-producto">
                         Casco integral para motociclista, ideal para conducción
                         urbana y viajes en carretera.
                     </p>
 
 
-                    <p class="precio fs-4">
+                    <p id="detalleProductoPrecio" class="precio fs-4">
                         Precio: $79.990
                     </p>
 
 
-                    <p class="text-muted">
+                    <p id="detalleProductoStock" class="text-muted stock-producto">
                         Stock disponible: 10 unidades
                     </p>
 
@@ -177,7 +178,7 @@
             Productos relacionados
         </h2>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+        <div id="productosRelacionados" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
             <div class="col">
 
@@ -197,7 +198,7 @@
                             $29.990
                         </p>
 
-                        <a href="detalle_producto.html"
+                        <a href="detalle_producto.html?id=2"
                            class="btn btn-outline-biker btn-sm">
                             Ver producto
                         </a>
@@ -226,7 +227,7 @@
                             $99.990
                         </p>
 
-                        <a href="detalle_producto.html"
+                        <a href="detalle_producto.html?id=3"
                            class="btn btn-outline-biker btn-sm">
                             Ver producto
                         </a>
@@ -255,6 +256,7 @@
 
     </footer>
 
+    <script src="validaciones.js"></script>
 
 </body>
 
