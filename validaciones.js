@@ -293,9 +293,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert(`¡Inicio de sesión correcto! Bienvenido/a (${usuarioValido.rol}).`);
                     
                     if (usuarioValido.rol === "administrador" || usuarioValido.rol === "vendedor") {
-                        window.location.href = "admin_2.html"; 
+                        window.location.href = "admin.html"; 
                     } else {
-                        window.location.href = "index_2.html";
+                        window.location.href = "index.html";
                     }
                 } else {
                     mostrarError("errorContrasenaLogin", "El correo o la contraseña son incorrectos.");
